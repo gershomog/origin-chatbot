@@ -110,8 +110,8 @@ def call_llm_for_rag_answer(query, retrieval_results):
          
 
 
-#alternative method of getting the prompt text, calling the PromptTemplatte object
-def format_prompt_2(query, retrieval_results):
+#get the prompt text, calling the PromptTemplatte object
+def format_prompt(query, retrieval_results):
     str_retrieval_context = format_retrieval_results_context(retrieval_results)
     prompt_text = gl_lc_doc_prompt_template.format(query = query, context = str_retrieval_context)
     return prompt_text
@@ -140,7 +140,7 @@ def format_retrieval_results_context(retrieval_results):
 #
 
 #wrong.  This is not what goes to the LLM
-def format_prompt(query, retrieval_results):
+def format_prompt_wrong(query, retrieval_results):
     retrieval_context_list = []
     for retrieval_result in retrieval_results:
         retrieval_context = retrieval_result[0].page_content
